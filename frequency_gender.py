@@ -5,7 +5,7 @@ import random
 from scipy.stats import sem, t
 
 # Open human CSV
-human_csv_name = "Human Randomness Patterns and Predictability in Participant-Generated Number Sequences (Responses) - 50 count.csv"
+human_csv_name = "Form_Responses_v2.csv"
 human_df = pd.read_csv(human_csv_name)
 
 female_df = human_df[human_df['Please enter your gender'] == 'Female'].iloc[:, 1:51]

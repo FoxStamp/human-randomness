@@ -4,7 +4,7 @@ import pandas as pd
 from scipy.stats import sem, t
 
 # Open human CSV
-human_csv_name = "Human Randomness_ Patterns and Predictability in Participant-Generated Number Sequences (Responses) - Form Responses v2.csv"
+human_csv_name = "Form_Responses_v2.csv"
 human_df = pd.read_csv(human_csv_name).iloc[:, 1:51]
 
 # Open control CSV
