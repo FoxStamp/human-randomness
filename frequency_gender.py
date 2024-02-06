@@ -20,7 +20,7 @@ control1_df = pd.DataFrame([[random.randint(0, 9) for _ in range(female_df.shape
 control2_df = pd.DataFrame([[random.randint(0, 9) for _ in range(male_df.shape[1])] for _ in range(male_df.shape[0])])
 
 
-fig, ax = plt.subplots(2, 2)
+fig, ax = plt.subplots(2, 2, figsize=(12, 7))
 
 counts_female = np.zeros(10, dtype=int)
 counts_male = np.zeros(10, dtype=int)
@@ -63,8 +63,8 @@ def plot_bar_with_confidence(ax, counts, title, color, control=False):
 
 plot_bar_with_confidence(ax[0, 0], counts_male, "Male Number Frequency", 'blue')
 plot_bar_with_confidence(ax[0, 1], counts_female, "Female Number Frequency", 'pink')
-plot_bar_with_confidence(ax[1, 0], counts2_control, "Control Number Frequency", 'gray', control=True)
-plot_bar_with_confidence(ax[1, 1], counts1_control, "Control Number Frequency", 'gray', control=True)
+plot_bar_with_confidence(ax[1, 0], counts2_control, "Control Number Frequency with Male Dataset Size", 'gray', control=True)
+plot_bar_with_confidence(ax[1, 1], counts1_control, "Control Number Frequency with Female Dataset Size", 'gray', control=True)
 
 plt.tight_layout()
 plt.legend()

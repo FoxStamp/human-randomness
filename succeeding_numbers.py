@@ -3,7 +3,7 @@ import numpy as np
 import pandas as pd
 
 #open human CSV
-human_csv_name = "Human Randomness Patterns and Predictability in Participant-Generated Number Sequences (Responses) - 50 count.csv"
+human_csv_name = "Human Randomness_ Patterns and Predictability in Participant-Generated Number Sequences (Responses) - Form Responses v2.csv"
 human_df = pd.read_csv(human_csv_name).iloc[:, 1:51]
 
 #open control CSV
