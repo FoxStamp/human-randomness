@@ -2,17 +2,26 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 from scipy.stats import sem, t
+import random
+import yaml
+
+# load config values
+with open('config.yml', 'r') as config_file:
+    config = yaml.safe_load(config_file)
+
+num_states = config['num_states']
+csv_name = config['csv_name']
+random_seed = config['random_seed']
+
+def generate_random_data(shape):
+    return pd.DataFrame([[random.randint(0, 9) for _ in range(shape[1])] for _ in range(shape[0])])
 
 # Open human CSV
-human_csv_name = "Form_Responses_v2.csv"
-human_df = pd.read_csv(human_csv_name).iloc[:, 1:51]
+human_df = pd.read_csv(csv_name).iloc[:, 1:51]
 
-# Open control CSV
-control_csv_name = "random_50x50_seed_682.csv"
-control_df = pd.read_csv(control_csv_name)
-
-# Get random seed from file name
-random_seed = control_csv_name[ control_csv_name.find('seed_') + 5 : control_csv_name.find('.csv')]
+# Get random seed & make random data
+random.seed(random_seed)
+control_df = generate_random_data(human_df.shape)
 
 fig, ax = plt.subplots(1, 2, figsize=(10, 5)) # change size as necessary
 

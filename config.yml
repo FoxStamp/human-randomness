@@ -1,0 +1,3 @@
+num_states: 10
+csv_name: "form responses/Form_Responses_v4.csv"
+random_seed: 42
