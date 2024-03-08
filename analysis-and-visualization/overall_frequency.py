@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import util
 
-num_states = util.get_num_states()
+num_states = util.num_states
 
 # load human data and generate control data
 def load_and_generate_data():

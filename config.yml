@@ -1,3 +1,4 @@
 num_states: 10
-csv_name: "form responses/Form_Responses_v4.csv"
-random_seed: 42
+csv_name: "form responses/Form_Responses_v5.csv"
+random_seed: 808
+chunk_size: 5

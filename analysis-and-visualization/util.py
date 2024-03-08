@@ -11,6 +11,7 @@ with open('config.yml', 'r') as config_file:
 num_states = config['num_states']
 csv_name = config['csv_name']
 random_seed = config['random_seed']
+chunk_size = config['chunk_size']
 
 random.seed(random_seed)
 
@@ -49,8 +50,8 @@ def generate_random_data(shape: tuple) -> pd.DataFrame:
 def count_occurrences(dataframe: pd.DataFrame) -> np.ndarray:
     counts = np.zeros(num_states)
 
-    for index, row in dataframe.items():
-        for col_name, cell_value in row.items():
+    for _, row in dataframe.iterrows():
+        for cell_value in row:
             counts[cell_value] += 1
 
     counts /= dataframe.size
@@ -65,7 +66,7 @@ def count_transitions(dataframe: pd.DataFrame, num: int) -> np.ndarray:
     total_transitions = 0
 
     for _, row in dataframe.iterrows():
-        for j in range(50 - 1):
+        for j in range(len(row) - 1):
             if row[j] == num:
                 counts[row[j + 1]] += 1
                 total_transitions += 1
@@ -89,12 +90,3 @@ def load_human_data(sortRow: str = None, value: str = None) -> pd.DataFrame:
 
     
     return human_df.iloc[:, 1:51]
-
-def get_num_states():
-    return num_states
-
-def get_csv_name():
-    return csv_name
-
-def get_random_seed():
-    return random_seed

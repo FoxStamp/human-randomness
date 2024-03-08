@@ -2,7 +2,7 @@ import util
 import numpy as np
 
 # get num states
-num_states = util.get_num_states()
+num_states = util.num_states
 
 # load human data and generate control data
 def load_and_generate_data():
@@ -28,7 +28,8 @@ prob_mat_control = util.prob_mat(control_df)
 
 print("Human Markov Chains:")
 
-# random initial state
-initial_state = np.random.randint(0, num_states - 1)
-sequence_length = 10 # change as necessary
-print(markov_chain(initial_state, prob_mat_human, sequence_length))
+for i in range(10):
+    # random initial state
+    initial_state = np.random.randint(0, num_states - 1)
+    sequence_length = 10 # change as necessary
+    print(markov_chain(initial_state, prob_mat_human, sequence_length))
